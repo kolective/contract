@@ -1,0 +1,10 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+[rpc_endpoints]
+pharos-rpc = "${PHAROS_TESTNET_RPC}"
+
+[etherscan]
+pharos = { key = "${ETHERSCAN_API_KEY}", url = "https://devnet-explorer.dplabs-internal.com/api" }
