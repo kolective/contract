@@ -13,8 +13,7 @@ foundryup
 ### Environment Variables
 Create a `.env` file and add the following variables:
 ```sh
-SONIC_API_KEY=
-SONIC_TESTNET_RPC=
+PHAROS_TESTNET_RPC=https://devnet.dplabs-internal.com/
 ETHERSCAN_API_KEY=
 PRIVATE_KEY=
 ```
@@ -22,8 +21,8 @@ PRIVATE_KEY=
 ## Installation
 Clone the repository and install dependencies:
 ```sh
-git clone https://github.com/Kolective/kolective-sc
-cd kolective-sc
+git clone https://github.com/kolective/contract
+cd contract
 forge install
 ```
 
@@ -32,7 +31,7 @@ forge install
 ### **1. Deploy Script (`Deploy.sol`)**
 - Deploys `TokenFactory` for creating ERC-20 tokens.
 - Deploys `Core` contract for handling liquidity and swaps.
-- Creates multiple tokens (SONIC, ETH, BTC, etc.) with predefined prices and liquidity.
+- Creates multiple tokens (PTT, ETH, BTC, etc.) with predefined prices and liquidity.
 - Adds liquidity to the `Core` contract.
 
 ### **2. Core Contract (`Core.sol`)**
@@ -54,12 +53,9 @@ forge install
 To deploy the contracts, use:
 ```sh
 forge script script/Deploy.s.sol:Deploy \
-  --rpc-url https://rpc.blaze.soniclabs.com \
+  --rpc-url pharos-rpc \
   --private-key $PRIVATE_KEY \
-  --broadcast --verify \
-  --etherscan-api-key $ETHERSCAN_API_KEY \
-  --verifier blockscout \
-  --verifier-url https://api-testnet.sonicscan.org/api \
+  --broadcast
   --via-ir
 ```
 
